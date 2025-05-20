@@ -1,1 +1,22 @@
-version: app/v1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginix-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabel:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: nginix
+        name: nginix-cont
+        ports:
+        - containerPort: 8080
+        
+            
+  
